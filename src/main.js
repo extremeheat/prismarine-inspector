@@ -1,4 +1,3 @@
-const path = require('path')
 const { app, BrowserWindow } = require('electron')
 
 function createMainWindow () {
@@ -7,7 +6,7 @@ function createMainWindow () {
       nodeIntegration: true,
       nodeIntegrationInWorker: true,
       contextIsolation: false,
-      // preload: path.join(__dirname, './client/preload.js')
+      preload: path.join(__dirname, './front/preload.js'),
     }
   })
 
@@ -15,8 +14,7 @@ function createMainWindow () {
   window.webContents.openDevTools()
 
   // window.loadFile(path.join(__dirname, './client/index.html'))
-
-  window.loadURL('file://' + __dirname + '/devtools/inspector.html?electron=true');
+  window.loadURL('file://' + __dirname + '/dt/inspector.html?electron=true');
 
   // window.webContents.on('devtools-opened', () => {
   //   window.focus()

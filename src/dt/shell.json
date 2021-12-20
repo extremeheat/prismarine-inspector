@@ -1,0 +1,36 @@
+{
+  "modules" : [
+    { "name": "bindings", "type": "autostart" },
+    { "name": "common", "type": "autostart" },
+    { "name": "components", "type": "autostart"},
+    { "name": "dom_extension", "type": "autostart" },
+    { "name": "extensions", "type": "autostart" },
+    { "name": "host", "type": "autostart" },
+    { "name": "main", "type": "autostart" },
+    { "name": "persistence", "type": "autostart" },
+    { "name": "platform", "type": "autostart" },
+    { "name": "product_registry", "type": "autostart" },
+    { "name": "protocol", "type": "autostart" },
+    { "name": "sdk", "type": "autostart" },
+    { "name": "browser_sdk", "type": "autostart" },
+    { "name": "services", "type": "autostart" },
+    { "name": "text_utils", "type": "autostart" },
+    { "name": "ui", "type": "autostart" },
+    { "name": "workspace", "type": "autostart" },
+
+    { "name": "cm" },
+    { "name": "cm_modes", "type": "remote" },
+    { "name": "data_grid" },
+    { "name": "diff" },
+    { "name": "formatter" },
+    { "name": "inline_editor" },
+    { "name": "javascript_metadata" },
+    { "name": "object_ui" },
+    { "name": "perf_ui" },
+    { "name": "search" },
+    { "name": "snippets" },
+    { "name": "source_frame" },
+    { "name": "text_editor" },
+    { "name": "workspace_diff" }
+  ]
+}

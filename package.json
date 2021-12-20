@@ -13,9 +13,8 @@
   "author": "extremeheat",
   "license": "ISC",
   "dependencies": {
-    "electron": "^16.0.5"
+    "electron": "^7.0.1"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/extremeheat/mc-netlog.git"
