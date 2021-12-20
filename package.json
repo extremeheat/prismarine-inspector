@@ -1,0 +1,27 @@
+{
+  "name": "mc-netlog",
+  "version": "0.0.1",
+  "description": "minecraft network packet logger",
+  "main": "src/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "keywords": [
+    "minecraft"
+  ],
+  "author": "extremeheat",
+  "license": "ISC",
+  "dependencies": {
+    "electron": "^16.0.5"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/extremeheat/mc-netlog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/extremeheat/mc-netlog/issues"
+  },
+  "homepage": "https://github.com/extremeheat/mc-netlog#readme"
+}
