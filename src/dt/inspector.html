@@ -11,6 +11,27 @@
     <meta name="referrer" content="no-referrer">
     <script type="text/javascript" src="Runtime.js"></script>
     <script type="text/javascript" src="inspector.js"></script>
+
+    <link rel="stylesheet" href="inspector_superlay.css"> <!-- Patch-->
+    <script type="text/javascript" src="inspector_manager.js"></script> <!-- Patch-->
+
+
+    <!--Start Patch-->
+    <div class="superlay">
+        <div style='text-align: center;'>
+            <h3>Welcome to Minecraft NetLogger</h3>
+            <p>Choose an option from below to begin</p>
+    
+            <!-- <p><button>Minecraft Java Edition Client</button></p> -->
+            <p><button onclick="openServerInputDialog('mcpc')">Minecraft Java Edition Proxy</button></p>
+            <!-- <p><button>Minecraft Bedrock Edition Client</button></p> -->
+            <p onclick="openServerInputDialog('bedrock')"><button>Minecraft Bedrock Edition Proxy</button></p>
+
+            <!-- <p>To save a session, use Control + S. <br/> To open a previously saved session, use Control + O now.</p> -->
+        </div>
+    </div>
+    <!-- End Patch-->
+
 </head>
 <body class="undocked" id="-blink-dev-tools"></body>
 </html>

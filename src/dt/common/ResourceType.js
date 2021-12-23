@@ -218,16 +218,19 @@ Common.ResourceCategory = class {
   }
 };
 
+// Patch
 Common.resourceCategories = {
-  XHR: new Common.ResourceCategory('XHR and Fetch', 'XHR'),
-  Script: new Common.ResourceCategory('Scripts', 'JS'),
-  Stylesheet: new Common.ResourceCategory('Stylesheets', 'CSS'),
-  Image: new Common.ResourceCategory('Images', 'Img'),
-  Media: new Common.ResourceCategory('Media', 'Media'),
-  Font: new Common.ResourceCategory('Fonts', 'Font'),
-  Document: new Common.ResourceCategory('Documents', 'Doc'),
-  WebSocket: new Common.ResourceCategory('WebSockets', 'WS'),
-  Manifest: new Common.ResourceCategory('Manifest', 'Manifest'),
+  Clientbound: new Common.ResourceCategory('Clientbound', '🔵 Clientbound'), // PATCH
+  Serverbound: new Common.ResourceCategory('Serverbound', '🟢 Serverbound'), // PATCH
+  // XHR: new Common.ResourceCategory('XHR and Fetch', 'Clientbound'),
+  // Script: new Common.ResourceCategory('Scripts', 'Serverbound'),
+  // Stylesheet: new Common.ResourceCategory('Stylesheets', 'CSS'),
+  // Image: new Common.ResourceCategory('Images', 'Img'),
+  // Media: new Common.ResourceCategory('Media', 'Media'),
+  // Font: new Common.ResourceCategory('Fonts', 'Font'),
+  // Document: new Common.ResourceCategory('Documents', 'Doc'),
+  // WebSocket: new Common.ResourceCategory('WebSockets', 'WS'),
+  // Manifest: new Common.ResourceCategory('Manifest', 'Manifest'),
   Other: new Common.ResourceCategory('Other', 'Other')
 };
 
@@ -236,6 +239,8 @@ Common.resourceCategories = {
  * @enum {!Common.ResourceType}
  */
 Common.resourceTypes = {
+  Clientbound: new Common.ResourceType('clientbound', 'Clientbound', Common.resourceCategories.Clientbound, true), // PATCH
+  Serverbound: new Common.ResourceType('serverbound', 'Serverbound', Common.resourceCategories.Serverbound, true), // PATCH
   XHR: new Common.ResourceType('xhr', 'XHR', Common.resourceCategories.XHR, true),
   Fetch: new Common.ResourceType('fetch', 'Fetch', Common.resourceCategories.XHR, true),
   EventSource: new Common.ResourceType('eventsource', 'EventSource', Common.resourceCategories.XHR, true),
@@ -255,6 +260,7 @@ Common.resourceTypes = {
   SignedExchange: new Common.ResourceType('signed-exchange', 'SignedExchange', Common.resourceCategories.Other, false),
 };
 
+// End Patch
 
 Common.ResourceType._mimeTypeByName = new Map([
   // CoffeeScript

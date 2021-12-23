@@ -91,6 +91,8 @@ SDK.MainConnection = class {
   }
 };
 
+const { EventEmitter } = require('events'); // Patch
+
 /**
  * @implements {Protocol.Connection}
  */
@@ -101,9 +103,19 @@ SDK.WebSocketConnection = class {
    */
   constructor(url, onWebSocketDisconnect) {
     this._socket = new WebSocket(url);
+    globalThis.socket = this._socket; // Patch
+    globalThis.socketEmitter = new EventEmitter() // Patch
+    window.onready && window.onready() // Patch
     this._socket.onerror = this._onError.bind(this);
     this._socket.onopen = this._onOpen.bind(this);
     this._socket.onmessage = messageEvent => {
+      // Patch
+      const data = JSON.parse(messageEvent.data);
+      if (data.from === 'backend') {
+        globalThis.socketEmitter.emit('message', data);
+        return;
+      }
+      // End Patch
       if (this._onMessage)
         this._onMessage.call(null, /** @type {string} */ (messageEvent.data));
     };

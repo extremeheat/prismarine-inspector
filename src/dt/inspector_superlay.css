@@ -1,0 +1,16 @@
+/* Patch */
+.superlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 99999;
+  background: gainsboro;
+  padding: 18px;
+  border-radius: 20px;
+  height: fit-content;
+  width: fit-content;
+  font-size: large;
+}
