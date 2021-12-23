@@ -12,4 +12,4 @@ Thanks to @kdzwinel's [betwixt](https://github.com/kdzwinel/betwixt) for the bas
 
 License
 
-* MIT
+* See LICENSE - this repo contains a bundled copy of Chromium DevTools, Copyright 2014 The Chromium Authors.
