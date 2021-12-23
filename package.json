@@ -5,6 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "electron": "electron .",
     "start": "electron ."
   },
   "keywords": [
@@ -13,7 +14,10 @@
   "author": "extremeheat",
   "license": "ISC",
   "dependencies": {
-    "electron": "^7.0.1"
+    "bedrock-protocol": "^3.8.0",
+    "electron": "^7.0.1",
+    "minecraft-protocol": "^1.29.1",
+    "ws": "^8.4.0"
   },
   "repository": {
     "type": "git",
