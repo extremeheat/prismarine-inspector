@@ -2,11 +2,16 @@
   "name": "mc-netlog",
   "version": "0.0.1",
   "description": "minecraft network packet logger",
-  "main": "src/main.js",
+  "main": "src/index.js",
+  "bin": {
+    "mc-netlog": "src/main.js"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "electron": "electron .",
-    "start": "electron ."
+    "test": "mocha --bail",
+    "electron": "electron src/main.js",
+    "start": "node src/server/start.js",
+    "lint": "standard",
+    "fix": "standard --fix"
   },
   "keywords": [
     "minecraft"
@@ -15,6 +20,7 @@
   "license": "ISC",
   "dependencies": {
     "bedrock-protocol": "^3.8.0",
+    "debug": "^4.3.3",
     "electron": "^7.0.1",
     "minecraft-protocol": "^1.29.1",
     "ws": "^8.4.0"
@@ -26,5 +32,17 @@
   "bugs": {
     "url": "https://github.com/extremeheat/mc-netlog/issues"
   },
-  "homepage": "https://github.com/extremeheat/mc-netlog#readme"
+  "homepage": "https://github.com/extremeheat/mc-netlog#readme",
+  "devDependencies": {
+    "mc-netlog": "file:.",
+    "mineflayer": "^3.11.2",
+    "mocha": "^9.1.3",
+    "prismarine-proxy": "^1.1.1",
+    "standard": "^16.0.4"
+  },
+  "standard": {
+    "ignore": [
+      "src/dt/"
+    ]
+  }
 }
