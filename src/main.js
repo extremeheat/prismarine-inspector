@@ -25,13 +25,6 @@ function createMainWindow () {
     window.loadURL('file://' + __dirname + '/dt/inspector.html?electron=true')
   }
 
-  // window.webContents.on('devtools-opened', () => {
-  //   window.focus()
-  //   setImmediate(() => {
-  //     window.focus()
-  //   })
-  // })
-
   new App(window.webContents) // eslint-disable-line
   // buildMenu(app, window, options)
   return window

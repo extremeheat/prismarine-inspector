@@ -19,17 +19,6 @@ function start (useBuiltinDevTools = false, runFrontendStandalone = false, port 
     debug('Connection', ws)
     const frontend = new FrontendConnection(ws, { useBuiltinDevTools, runFrontendStandalone })
     let proxy
-    if (!runFrontendStandalone) {
-      // proxy = bedrockProxy({ remoteServerHost: '127.0.0.1', remoteServerPort: 19130, localBindPort: 19131 }, frontend);
-      // proxy = mcpcProxy({ remoteServerHost: '127.0.0.1', remoteServerPort: 25565, localBindPort: 25560 }, frontend)
-      // if (useBuiltinDevTools) {
-      //   ws.send(JSON.stringify({
-      //     from: 'backend',
-      //     type: 'start-ok'
-      //   }))
-      // }
-    }
-
     cb(frontend)
 
     ws.on('message', function message (data) {
@@ -91,13 +80,6 @@ function start (useBuiltinDevTools = false, runFrontendStandalone = false, port 
       entry.mimeType = 'text/html'
       frontend.receiveSpecial(entry)
     }
-
-    // ws.send('something');
-    // Network.enable
-    // ws.send(`{"method":"DOM.disable","params":{"requestId":"undefined","frameId":"123.2","loaderId":"123.67","documentURL":"https://betwixt","request":{"url":"https://google.com","method":"MUM","headers":{"lol":"123"},"initialPriority":"High","mixedContentType":"none","postData":""},"timestamp":0.0036007,"wallTime":1640184612.373,"initiator":{"type":"other"},"type":"XHR"}}`)
-    // ws.send(`{"method":"Console.disable","params":{"requestId":"undefined","frameId":"123.2","loaderId":"123.67","documentURL":"https://betwixt","request":{"url":"https://google.com","method":"MUM","headers":{"lol":"123"},"initialPriority":"High","mixedContentType":"none","postData":""},"timestamp":0.0036007,"wallTime":1640184612.373,"initiator":{"type":"other"},"type":"XHR"}}`)
-    // ws.send()
-    // ws.send(`{"method":"Network.requestWillBeSent","params":{"requestId":"undefined","frameId":"123.2","loaderId":"123.67","documentURL":"https://betwixt","request":{"url":"https://google.com","method":"MUM","headers":{"lol":"123"},"initialPriority":"High","mixedContentType":"none","postData":""},"timestamp":0.0036007,"wallTime":1640184612.373,"initiator":{"type":"other"},"type":"XHR"}}`)
   })
 }
 
