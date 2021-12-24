@@ -1,24 +1,31 @@
-## mc-netlog
+# mc-netlog
+
 <img align="right" src="https://user-images.githubusercontent.com/13713600/147316906-a8b99aea-0e17-4882-a1de-c70149a70916.png" width="50%" height="50%" />
-Minecraft protocol packet viewer using Chrome DevTools
+Minecraft protocol packet viewer using Chrome DevTools.
 
 Supports `mineflayer`, `node-minecraft-protocol`, `prismarine-proxy` and `bedrock-protocol`.
 
 If you have Chrome installed, you can use your existing Chrome browser or a bundled copy of DevTools.
 
+[![NPM version](https://img.shields.io/npm/v/bedrock-protocol.svg)](http://npmjs.com/package/mc-netlog)
+[![Build Status](https://github.com/extremeheat/mc-netlog/workflows/CI/badge.svg)](https://github.com/extremeheat/mc-netlog/actions?query=workflow%3A%22CI%22)
+[![Discord](https://img.shields.io/badge/chat-on%20discord-brightgreen.svg)](https://discord.gg/GsEFRM8)
 
 
 <br/>
 
 ## Install
+
+As a developer tool, you probably want to install it globally:
+
 ```js
-npm i extremeheat/mc-netlog
+npm install -g mc-netlog
 ```
 
 or usable with npx if you just want to run the standalone client (see below):
 
 ```js
-npx extremeheat/mc-netlog
+npx mc-netlog
 ```
 
 ## Usage
@@ -40,16 +47,7 @@ bot.on('spawn', () => console.log('spawned'))
 
 #### with prismarine-proxy
 
-```js
-const netlog = require('mc-netlog')
-const mineflayer = require('mineflayer')
-
-const bot = mineflayer.createBot({ 'host': 'localhost' })
-netlog.listen(bot, { useBundledDevTools: false })
-
-// ...
-bot.on('spawn', () => console.log('spawned'))
-```
+See examples/
 
 #### with node-minecraft-protocol client
 
