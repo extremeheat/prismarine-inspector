@@ -32,6 +32,11 @@ npx mc-netlog
 
 ### as a library
 
+The default export takes emitter and options arguments. If `useBundledDevTools` is false you will get a link to open in Chrome, otherwise if true you will get an Electron window.
+```ts
+netlog(emitter, options)
+```
+
 #### with mineflayer...
 
 ```js
@@ -39,7 +44,7 @@ const netlog = require('mc-netlog')
 const mineflayer = require('mineflayer')
 
 const bot = mineflayer.createBot({ 'host': 'localhost' })
-netlog.listen(bot, { useBundledDevTools: false })
+netlog(bot, { useBundledDevTools: false })
 
 // ...
 bot.on('spawn', () => console.log('spawned'))
@@ -56,7 +61,7 @@ const nmp = require('minecraft-protocol')
 const netlog = require('mc-netlog')
 
 const client = nmp.createClient(...)
-netlog.listen(client)
+netlog(client)
 ```
 
 #### with bedrock-protocol client
@@ -66,7 +71,7 @@ const bp = require('bedrock-protocol')
 const netlog = require('mc-netlog')
 
 const client = bp.createClient(...)
-netlog.listen(client)
+netlog(client)
 ```
 
 ### as a standalone client
