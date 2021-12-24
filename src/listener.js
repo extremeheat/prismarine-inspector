@@ -1,6 +1,7 @@
 const debug = require('debug')('mc-netlog')
 const { EventEmitter } = require('ws')
 const server = require('./server/server')
+const { serialize } = require('./util')
 
 class IOQueue extends EventEmitter {
   constructor () {
@@ -56,7 +57,7 @@ function listen (object, options = {}) {
     emitter._write = emitter.write
     emitter.write = (name, data) => {
       emitter._write(name, data)
-      queue.receiveServerbound(name, data, JSON.stringify(data).length, emitter.state)
+      queue.receiveServerbound(name, data, serialize(data).length, emitter.state)
     }
 
     emitter._writeRaw = emitter.writeRaw
@@ -86,20 +87,20 @@ function listen (object, options = {}) {
   }
 
   function handleBedrockClient () {
-    emitter.on('packet', ({ data: { name, params }, meta: { size } }) => {
+    emitter.on('packet', ({ data: { name, params }, metadata: { size } }) => {
       queue.receiveClientbound(name, params, size, '')
     })
 
     emitter._write = emitter.write
     emitter.write = (name, data) => {
       emitter._write(name, data)
-      queue.receiveServerbound(name, data, JSON.stringify(data).length, '')
+      queue.receiveServerbound(name, data, serialize(data).length, '')
     }
 
     emitter._queue = emitter.queue
     emitter.queue = (name, data) => {
       emitter._queue(name, data)
-      queue.receiveServerbound(name, data, JSON.stringify(data).length, '')
+      queue.receiveServerbound(name, data, serialize(data).length, '')
     }
 
     emitter._writeRaw = emitter.writeRaw
@@ -155,7 +156,7 @@ function listen (object, options = {}) {
       console.info('\nYou can bookmark the URL above for later reference.')
     }
     return new Promise(resolve => {
-      server(options.useBundledDevTools, false, options.port, frontend => {
+      server(options, false, frontend => {
         queue.setFrontend(frontend)
         resolve(frontend)
       })
