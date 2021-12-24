@@ -1,5 +1,5 @@
 const { InstantConnectProxy } = require('prismarine-proxy')
-const netlog = require('mc-netlog')
+const netlog = require('prismarine-inspector')
 const { setTimeout: wait } = require('timers/promises')
 
 it('works with prismarine-proxy', async () => {

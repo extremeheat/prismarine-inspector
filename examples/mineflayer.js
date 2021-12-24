@@ -1,5 +1,5 @@
 const mineflayer = require('mineflayer')
-const netlog = require('mc-netlog')
+const netlog = require('prismarine-inspector')
 
 const bot = mineflayer.createBot({
   host: 'localhost',

@@ -1,5 +1,5 @@
 const bp = require('bedrock-protocol')
-const netlog = require('mc-netlog')
+const netlog = require('prismarine-inspector')
 const { setTimeout: wait } = require('timers/promises')
 
 it('works with bedrock relay', async () => {

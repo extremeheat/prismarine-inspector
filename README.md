@@ -1,4 +1,4 @@
-# mc-netlog
+# prismarine-inspector
 
 <img align="right" src="https://user-images.githubusercontent.com/13713600/147316906-a8b99aea-0e17-4882-a1de-c70149a70916.png" width="50%" height="50%" />
 Minecraft protocol packet viewer using Chrome DevTools.
@@ -7,7 +7,7 @@ Supports `mineflayer`, `node-minecraft-protocol`, `prismarine-proxy` and `bedroc
 
 If you have Chrome installed, you can use your existing Chrome browser or a bundled copy of DevTools.
 
-[![NPM version](https://img.shields.io/npm/v/bedrock-protocol.svg)](http://npmjs.com/package/mc-netlog)
+[![NPM version](https://img.shields.io/npm/v/prismarine-inspector.svg)](http://npmjs.com/package/prismarine-inspector)
 [![Build Status](https://github.com/extremeheat/mc-netlog/workflows/CI/badge.svg)](https://github.com/extremeheat/mc-netlog/actions?query=workflow%3A%22CI%22)
 [![Discord](https://img.shields.io/badge/chat-on%20discord-brightgreen.svg)](https://discord.gg/GsEFRM8)
 
@@ -19,13 +19,13 @@ If you have Chrome installed, you can use your existing Chrome browser or a bund
 As a developer tool, you probably want to install it globally:
 
 ```js
-npm install -g mc-netlog
+npm install -g prismarine-inspector
 ```
 
 or usable with npx if you just want to run the standalone client (see below):
 
 ```js
-npx mc-netlog
+npx prismarine-inspector
 ```
 
 ## Usage
@@ -40,7 +40,7 @@ netlog(emitter, options)
 #### with mineflayer...
 
 ```js
-const netlog = require('mc-netlog')
+const netlog = require('prismarine-inspector')
 const mineflayer = require('mineflayer')
 
 const bot = mineflayer.createBot({ 'host': 'localhost' })
@@ -58,7 +58,7 @@ See examples/
 
 ```js
 const nmp = require('minecraft-protocol')
-const netlog = require('mc-netlog')
+const netlog = require('prismarine-inspector')
 
 const client = nmp.createClient(...)
 netlog(client)
@@ -68,7 +68,7 @@ netlog(client)
 
 ```js
 const bp = require('bedrock-protocol')
-const netlog = require('mc-netlog')
+const netlog = require('prismarine-inspector')
 
 const client = bp.createClient(...)
 netlog(client)
@@ -84,7 +84,7 @@ limited functionality.
 Install the package locally or globally and run:
 
 ```js
-npx mc-netlog
+npx prismarine-inspector
 ```
 
 You will get a small wizard screen to setup a simple proxy. The server you are connecting to **must** be offline.
@@ -108,3 +108,5 @@ Enabling the `Name`, `Method` and `Protocol` tabs will show you the packet name,
 #### License
 
 * See LICENSE - this repo contains a bundled copy of Chromium DevTools, Copyright 2014 The Chromium Authors.
+
+(repo formerly known as MC-NetLog)

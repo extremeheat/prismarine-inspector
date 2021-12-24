@@ -58,7 +58,7 @@ function start (options, runFrontendStandalone, cb = () => {}) {
 
     ws.on('close', () => {
       if (runFrontendStandalone) {
-        console.log('[mc-netlog] Frontend was closed. Goodbye!')
+        console.log('[prismarine-inspector] Frontend was closed. Goodbye!')
         process.exit(0)
       }
     })
@@ -70,8 +70,8 @@ function start (options, runFrontendStandalone, cb = () => {}) {
       const entry = new Entry({
         name: 'README IN PREVIEW',
         params: `
-        <h2>Welcome to mc-netlog</h2>
-        <p>mc-netlog is a tool to view Minecraft network traffic. At the left is a list of packets. Blue (&#128309;) indicates a clientbound packet and green (&#128994;) indicates a serverbound packet.</p>
+        <h2>Welcome to prismarine-inspector</h2>
+        <p>prismarine-inspector is a tool to view Minecraft network traffic. At the left is a list of packets. Blue (&#128309;) indicates a clientbound packet and green (&#128994;) indicates a serverbound packet.</p>
         <p>Click on a packet to see its details in JSON format. </p>
         <p>Enable the METHOD and PROTOCOL tabs to see the packet send time and time since last packet.</p>
         <p>Click on the XHR tab to see Clientbound packets, and JS to see Serverbound packets.</p>
