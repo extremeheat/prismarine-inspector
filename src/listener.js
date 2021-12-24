@@ -7,7 +7,6 @@ class IOQueue extends EventEmitter {
   constructor () {
     super()
     this.cbQ = []
-    this.sbQ = []
     this.frontend = null
     this.it = Date.now()
   }
@@ -16,10 +15,8 @@ class IOQueue extends EventEmitter {
     this.frontend = frontend
     frontend.setInitialTime(this.it)
     while (this.cbQ.length) {
-      this.frontend.receiveClientbound(...this.cbQ.shift())
-    }
-    while (this.sbQ.length) {
-      this.frontend.receiveServerbound(...this.sbQ.shift())
+      const [t, ...a] = this.cbQ.shift()
+      this.frontend[{ cb: 'receiveClientbound', sb: 'receiveServerbound' }[t]](...a)
     }
   }
 
@@ -27,7 +24,7 @@ class IOQueue extends EventEmitter {
     if (this.frontend) {
       this.frontend.receiveClientbound(name, params, size, state)
     } else {
-      this.cbQ.push([name, params, size, state])
+      this.cbQ.push(['cb', name, params, size, state])
     }
   }
 
@@ -35,7 +32,7 @@ class IOQueue extends EventEmitter {
     if (this.frontend) {
       this.frontend.receiveServerbound(name, params, size, state)
     } else {
-      this.sbQ.push([name, params, size, state])
+      this.cbQ.push(['sb', name, params, size, state])
     }
   }
 

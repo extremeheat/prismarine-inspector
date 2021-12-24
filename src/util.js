@@ -1,5 +1,5 @@
 module.exports = {
-  serialize(o) {
+  serialize (o) {
     return JSON.stringify(o, (key, value) => typeof value === 'bigint' ? String(value) : value)
   }
 }
