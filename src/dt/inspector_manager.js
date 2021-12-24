@@ -48,9 +48,7 @@ function openServerInputDialog(edition='bedrock') {
   superlay.style.display = 'block'
 
   let config = new Config(edition)
-  if (config.get()) {
-    config = JSON.parse(config)
-  } else {
+  if (!config.get()) {
     const defaultConfig = {
       mcpc: {
         'server-input': '127.0.0.1:25565',
@@ -86,3 +84,7 @@ window.onready = function() {
   })  
 }
 
+window.onerror = message => {
+  console.error(message)
+  alert('Error: ' + message + '\n\nPlease restart the program.')
+}
