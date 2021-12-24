@@ -83,6 +83,13 @@ function start (options, runFrontendStandalone, cb = () => {}) {
       entry.mimeType = 'text/html'
       frontend.receiveSpecial(entry)
     }
+
+    if (useBuiltinDevTools) {
+      ws.send(JSON.stringify({
+        from: 'backend',
+        type: 'start-ok'
+      }))
+    }
   })
 }
 
