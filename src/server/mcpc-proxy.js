@@ -81,8 +81,7 @@ class InstantConnectProxy extends EventEmitter {
   }
 }
 
-module.exports = ({remoteServerHost, remoteServerPort, localBindPort, username, password}, con) => {
-  console.log('remote', remoteServerHost, remoteServerPort, localBindPort, username, password)
+module.exports = ({ remoteServerHost, remoteServerPort, localBindPort, username, password }, con) => {
   const proxy = new InstantConnectProxy({
     serverOptions: {
       host: 'localhost',
@@ -94,9 +93,9 @@ module.exports = ({remoteServerHost, remoteServerPort, localBindPort, username, 
       host: remoteServerHost,
       port: remoteServerPort,
       username: username || 'proxy',
-      password: password || '',
+      password: password || ''
     },
-    loginHandler: (client) => console.log('login', client)
+    loginHandler: (client) => console.log('client login', client)
   })
   con.setInitialTime(Date.now())
 
@@ -112,3 +111,4 @@ module.exports = ({remoteServerHost, remoteServerPort, localBindPort, username, 
     con.receiveServerbound(meta.name, data, meta.size, meta.state)
   })
 }
+module.exports.InstantConnectProxy = InstantConnectProxy

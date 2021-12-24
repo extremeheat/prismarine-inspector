@@ -1,17 +1,17 @@
 const path = require('path')
 const { app, BrowserWindow } = require('electron')
 const App = require('./back/app')
-const buildMenu = require('./back/menu')
-const options = {}
+// const buildMenu = require('./back/menu')
 const host = process.argv[2]
 
 function createMainWindow () {
   const window = new BrowserWindow({
+    title: 'Minecraft Network Logger',
     webPreferences: {
       nodeIntegration: true,
       nodeIntegrationInWorker: true,
       contextIsolation: false,
-      preload: path.join(__dirname, './front/preload.js'),
+      preload: path.join(__dirname, './front/preload.js')
     }
   })
 
@@ -20,11 +20,10 @@ function createMainWindow () {
 
   // window.loadFile(path.join(__dirname, './client/index.html'))
   if (host) {
-    window.loadURL('file://' + __dirname + '/dt/inspector.html?ws=' + host);
+    window.loadURL('file://' + __dirname + '/dt/inspector.html?ws=' + host)
   } else {
-    window.loadURL('file://' + __dirname + '/dt/inspector.html?electron=true');
+    window.loadURL('file://' + __dirname + '/dt/inspector.html?electron=true')
   }
-
 
   // window.webContents.on('devtools-opened', () => {
   //   window.focus()
@@ -33,7 +32,7 @@ function createMainWindow () {
   //   })
   // })
 
-  new App(window.webContents)
+  new App(window.webContents) // eslint-disable-line
   // buildMenu(app, window, options)
   return window
 }

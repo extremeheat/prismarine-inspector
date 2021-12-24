@@ -1,4 +1,3 @@
-
 const bp = require('bedrock-protocol')
 
 module.exports = ({ remoteServerHost, remoteServerPort, localBindPort, username, password }, con) => {
@@ -20,11 +19,11 @@ module.exports = ({ remoteServerHost, remoteServerPort, localBindPort, username,
     player.on('login', (client) => {
       console.log('login', client)
     })
-  
+
     player.on('clientbound', ({ name, params }, { metadata: { size } }) => {
       con.receiveClientbound(name, params, size)
     })
-  
+
     player.on('serverbound', ({ name, params }, { metadata: { size } }) => {
       con.receiveServerbound(name, params, size)
     })
