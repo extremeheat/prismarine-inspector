@@ -5,7 +5,10 @@ const bedrockProxy = require('./bedrock-proxy')
 const mcpcProxy = require('./mcpc-proxy')
 const FrontendConnection = require('./FrontendConnection')
 
-function start (useBuiltinDevTools = false, runFrontendStandalone = false, port = 9222, cb = () => {}) {
+function start (options, runFrontendStandalone, cb = () => {}) {
+  const useBuiltinDevTools = options.useBundledDevTools || false
+  const port = options.port || 9222
+
   const wss = new WebSocketServer({ port: port })
   globalThis._mcnetLogServer = wss
   if (useBuiltinDevTools) {
@@ -17,7 +20,7 @@ function start (useBuiltinDevTools = false, runFrontendStandalone = false, port 
 
   wss.on('connection', function connection (ws) {
     debug('Connection', ws)
-    const frontend = new FrontendConnection(ws, { useBuiltinDevTools, runFrontendStandalone })
+    const frontend = new FrontendConnection(ws, options)
     let proxy
     cb(frontend)
 

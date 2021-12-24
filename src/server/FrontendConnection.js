@@ -3,12 +3,13 @@ const RequestEntry = require('./entry')
 class FrontendConnection {
   packets = []
 
-  constructor(connection, { useBuiltinDevTools }) {
+  constructor(connection, { useBundledDevTools, ignore }) {
     this.connection = connection
     this.outbound = {}
     this.outboundCount = 0
+    this.ignore = ignore
 
-    if (useBuiltinDevTools) {
+    if (useBundledDevTools) {
       this.categories = { clientbound: 'Clientbound', serverbound: 'Serverbound', other: 'Other' }
     } else {
       this.categories = { clientbound: 'XHR', serverbound: 'Script', other: 'Other' }
@@ -145,6 +146,7 @@ class FrontendConnection {
   }
 
   receiveClientbound(name, params, size, state) {
+    if (this.ignore && name.match(this.ignore)) return 
     const requestEntry = new RequestEntry({
       name, params, size, state, method: 'clientbound'
     });
@@ -154,6 +156,7 @@ class FrontendConnection {
   }
 
   receiveServerbound(name, params, size, state) {
+    if (this.ignore && name.match(this.ignore)) return
     const requestEntry = new RequestEntry({
       name, params, size, state, method: 'serverbound'
     });
