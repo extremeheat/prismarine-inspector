@@ -602,7 +602,7 @@ Network.NetworkLogView = class extends UI.VBox {
 
     if (this._recording) {
       const recordingText = hintText.createChild('span');
-      recordingText.textContent = Common.UIString('Recording network activity\u2026');
+      recordingText.textContent = Common.UIString('Recording network activity, waiting for client\u2026');
       if (reloadShortcutNode) {
         hintText.createChild('br');
         hintText.appendChild(
@@ -624,7 +624,7 @@ Network.NetworkLogView = class extends UI.VBox {
 
     const docsLink = recordingText.createChild("a");
     docsLink.target = '_blank';
-    docsLink.href = 'https://github.com/kdzwinel/betwixt/blob/master/README.md#setting-up';
+    docsLink.href = 'https://github.com/extremeheat/mc-netlog/blob/master/README.md#setup';
     docsLink.textContent = Common.UIString("Read the docs.");
   }
 
