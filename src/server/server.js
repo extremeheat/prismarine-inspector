@@ -85,10 +85,12 @@ function start (options, runFrontendStandalone, cb = () => {}) {
     }
 
     if (useBuiltinDevTools) {
-      ws.send(JSON.stringify({
-        from: 'backend',
-        type: 'start-ok'
-      }))
+      if (!runFrontendStandalone) {
+        ws.send(JSON.stringify({
+          from: 'backend',
+          type: 'start-ok'
+        })) 
+      }
     }
   })
 }
