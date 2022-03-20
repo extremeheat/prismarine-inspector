@@ -13,7 +13,8 @@ function start (options, runFrontendStandalone, cb = () => {}) {
   globalThis._mcnetLogServer = wss
   if (useBuiltinDevTools) {
     const proc = cp.exec('npm run electron 127.0.0.1:' + port, {
-      stdio: 'inherit'
+      stdio: 'inherit',
+      cwd: __dirname
     })
     proc.stdout.pipe(process.stdout)
   }
