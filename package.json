@@ -34,9 +34,9 @@
   },
   "homepage": "https://github.com/extremeheat/mc-netlog#readme",
   "devDependencies": {
-    "prismarine-inspector": "file:.",
     "mineflayer": "^3.11.2",
     "mocha": "^9.1.3",
+    "prismarine-inspector": "file:.",
     "prismarine-proxy": "^1.1.1",
     "standard": "^16.0.4"
   },

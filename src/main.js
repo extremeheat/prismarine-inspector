@@ -1,6 +1,5 @@
 const path = require('path')
 const { app, BrowserWindow } = require('electron')
-const App = require('./back/app')
 // const buildMenu = require('./back/menu')
 const host = process.argv[2]
 
@@ -25,7 +24,6 @@ function createMainWindow () {
     window.loadURL('file://' + __dirname + '/dt/inspector.html?electron=true')
   }
 
-  new App(window.webContents) // eslint-disable-line
   // buildMenu(app, window, options)
   return window
 }
