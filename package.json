@@ -1,6 +1,6 @@
 {
   "name": "prismarine-inspector",
-  "version": "0.1.2",
+  "version": "0.1.4",
   "description": "Minecraft network packet logger",
   "main": "src/index.js",
   "bin": {

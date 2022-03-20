@@ -1,3 +1,6 @@
+## 0.1.4
+* Fix bundled electron error on startup
+
 ## 0.1.1
 
 * Fix popup window when using bundled dev tools
