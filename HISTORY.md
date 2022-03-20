@@ -1,3 +1,6 @@
+## 0.1.5
+* Correct electron start script working dir, fix #2
+
 ## 0.1.4
 * Fix bundled electron error on startup
 
