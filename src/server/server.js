@@ -29,19 +29,19 @@ function start (options, runFrontendStandalone, cb = () => {}) {
       const body = JSON.parse(data)
       if (body.from === 'frontend') {
         if (body.type === 'start-bedrock-proxy') {
-          const [remoteServerHost, remoteServerPort] = body.data.server.split(':')
+          const [remoteServerHost, remoteServerPort, remoteServerVersion] = body.data.server.split(':')
           const port = body.data.port
           debug('start-bedrock-proxy', remoteServerHost, remoteServerPort, port)
-          proxy = bedrockProxy({ remoteServerHost, remoteServerPort, localBindPort: port }, frontend)
+          proxy = bedrockProxy({ remoteServerHost, remoteServerPort, localBindPort: port, version: remoteServerVersion }, frontend)
           ws.send(JSON.stringify({
             from: 'backend',
             type: 'start-ok'
           }))
         } else if (body.type === 'start-mcpc-proxy') {
-          const [remoteServerHost, remoteServerPort] = body.data.server.split(':')
+          const [remoteServerHost, remoteServerPort, remoteServerVersion] = body.data.server.split(':')
           const port = body.data.port
           debug('start-mcpc-proxy', remoteServerHost, remoteServerPort, port)
-          proxy = mcpcProxy({ remoteServerHost, remoteServerPort, localBindPort: port }, frontend)
+          proxy = mcpcProxy({ remoteServerHost, remoteServerPort, localBindPort: port, version: remoteServerVersion }, frontend)
           ws.send(JSON.stringify({
             from: 'backend',
             type: 'start-ok'

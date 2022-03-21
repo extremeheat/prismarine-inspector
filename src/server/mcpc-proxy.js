@@ -23,6 +23,9 @@ class InstantConnectProxy extends EventEmitter {
     const mcData = mcDataLoader(toClient.version)
     // const mcVersion = mcData.version.minecraftVersion
     // const ver = verMap[mcVersion] ?? mcVersion
+    if (mcData.version['==']('1.18.2')) { // Temporary fix for mc-data
+      mcData.loginPacket = require('./pc1.18login.json')
+    }
     toClient.write('login', { ...(mcData.loginPacket || { entityId: 0, gameMode: 0, dimension: 0, difficulty: 0, maxPlayers: 20, levelType: 'default', reducedDebugInfo: false, enableRespawnScreen: true }), entityId: toClient.id })
 
     const toServer = createClient({
@@ -81,21 +84,21 @@ class InstantConnectProxy extends EventEmitter {
   }
 }
 
-module.exports = ({ remoteServerHost, remoteServerPort, localBindPort, username, password }, con) => {
+module.exports = ({ remoteServerHost, remoteServerPort, localBindPort, username, password, version }, con) => {
   const proxy = new InstantConnectProxy({
     serverOptions: {
       host: 'localhost',
       port: localBindPort,
-      version: '1.8.9'
+      version
     },
     clientOptions: {
-      version: '1.8.9',
+      version,
       host: remoteServerHost,
       port: remoteServerPort,
       username: username || 'proxy',
       password: password || ''
     },
-    loginHandler: (client) => console.log('client login', client)
+    loginHandler: (client) => console.log('client login')
   })
   con.setInitialTime(Date.now())
 
