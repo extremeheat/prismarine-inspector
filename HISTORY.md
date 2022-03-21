@@ -1,3 +1,6 @@
+## 0.2.0
+* Add a version selector for bundled viewer
+
 ## 0.1.5
 * Correct electron start script working dir, fix #2
 
